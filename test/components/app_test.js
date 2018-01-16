@@ -19,4 +19,8 @@ describe('App', () => { // use 'describe' to group similar tests
     it('show the correct text', () => {
         expect(component).to.contain('React simple starter');
     });
+
+    it('show a comment box', () => {
+      expect(component.find('.comment_box')).to.exist;
+  });
 });
