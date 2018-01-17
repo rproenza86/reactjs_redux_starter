@@ -1,40 +1,19 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class CommentBox extends Component {
-    constructor(props) {
-        super(props);
+import CommentBoxUI from './comment_box_ui';
 
-        this.state = {
-            comment: ''
-        };
-    }
+const mapStateToProps = (state) => {
+    return {};
+};
 
-    _onChangeHandler(event){
-        this.setState({
-            comment: event.target.value
-        });
-    }
+const mapDispatchToProps = (dispatch) => {
+    return {};
+};
 
-    _onSubmitHandler(event){
-        event.preventDefault();
-        this.setState({
-            comment: ''
-        });
-    }
+const CommentBoxContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CommentBoxUI);
 
-    render() {
-            return ( 
-                <form className="comment_box" onSubmit={this._onSubmitHandler.bind(this)}>
-                    <textarea 
-                        name="comment_box_textarea" 
-                        id="app_comment_box_textarea" 
-                        cols="30" 
-                        rows="10"
-                        value={this.state.comment}
-                        onChange={this._onChangeHandler.bind(this)}
-                    />
-                    <button>Submit comment</button>
-                </form>
-            );
-        }
-    }
+export default CommentBoxContainer;
