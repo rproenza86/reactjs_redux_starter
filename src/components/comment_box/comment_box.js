@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { saveComment } from '../../actions/index';
 
 import CommentBoxUI from './comment_box_ui';
 
@@ -8,7 +9,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    const actionCreators = {
+        saveComment
+    };
+    return bindActionCreators(actionCreators, dispatch);
 };
 
 const CommentBoxContainer = connect(
