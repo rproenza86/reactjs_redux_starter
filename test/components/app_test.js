@@ -20,7 +20,11 @@ describe('App', () => { // use 'describe' to group similar tests
         expect(component).to.contain('React simple starter');
     });
 
-    it('show a comment box', () => {
+    it('shows a comment box', () => {
       expect(component.find('.comment_box')).to.exist;
-  });
+    });
+
+    it('show a comment list', () => {
+      expect(component.find('.comment_list')).to.exist;
+    });
 });
