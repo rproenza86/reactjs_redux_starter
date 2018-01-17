@@ -1,34 +1,21 @@
-import React, { Component } from 'react'; 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-class CommentList extends Component {
-    constructor(props) {
-        super(props);
+import CommentListUI from './comment_list_ui';
 
-        this.state = {
-            comments: props.comments || ['My great first default comment']
-        };
-    }
-
-    render() {
-        const listItems = this.state.comments.map(comment => (<li key={comment} >{comment}</li>));
-        return ( 
-            <ul className="comment_list">
-                {listItems}
-            </ul>
-        );
-    }
-}
-
-/**
- * Container declaration
- */
-function mapStateToProps(state){
+const mapStateToProps = (state) => {
     return {
         comments: state.comments
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps)(CommentList);
+const mapDispatchToProps = (dispatch) => {
+    return {};
+};
 
-// TODO: convert component in dummy cmp and create separate container
+const CommentListContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CommentListUI);
+
+export default CommentListContainer;
