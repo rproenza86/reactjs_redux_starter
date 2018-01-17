@@ -23,7 +23,7 @@ function renderComponent(ComponentClass, props = {}, state = {}) {
     </Provider>
   );
 
-  return $(ReactDOM.findDOMNode(componentInstance));
+  return $(ReactDOM.findDOMNode(componentInstance)); // This return a Chai-jquery queryble component. Check assertions docs here : https://github.com/chaijs/chai-jquery 
 }
 
 $.fn.simulate = function(eventName, value) {
