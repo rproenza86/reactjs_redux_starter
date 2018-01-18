@@ -26,6 +26,7 @@ export default class CommentBox extends Component {
     render() {
             return ( 
                 <form className="comment_box" onSubmit={this._onSubmitHandler.bind(this)}>
+                    <h4>Add a comment</h4>
                     <textarea 
                         name="comment_box_textarea" 
                         id="app_comment_box_textarea" 
@@ -34,7 +35,9 @@ export default class CommentBox extends Component {
                         value={this.state.comment}
                         onChange={this._onChangeHandler.bind(this)}
                     />
-                    <button>Submit comment</button>
+                    <div>
+                        <button>Submit comment</button>
+                    </div>
                 </form>
             );
         }
