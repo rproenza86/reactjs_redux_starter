@@ -13,6 +13,10 @@
 * Store
 * Middleware
 
+## Unit test
+* Mocha as test runner
+* Chai as assertion library
+
 ### Getting Started
 
 There are two methods for getting started with this repo.

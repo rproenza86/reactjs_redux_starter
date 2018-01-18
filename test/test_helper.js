@@ -9,9 +9,11 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../src/reducers';
 
+// jsdom setup
 global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = global.document.defaultView;
 global.navigator = global.window.navigator;
+// jquery setup
 const $ = _$(window);
 
 chaiJquery(chai, chai.util, $);
