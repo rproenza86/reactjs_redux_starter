@@ -1,11 +1,8 @@
 import { combineReducers } from 'redux';
+import { commentsReducer } from './comments';
 
 const rootReducer = combineReducers({
-    comments: (state = [
-        'New comment 1111',
-        'New comment 22222',
-        'New comment 33333'
-    ]) => state
+    comments: commentsReducer
 });
 
 export default rootReducer;
