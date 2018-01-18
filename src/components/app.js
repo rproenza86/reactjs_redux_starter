@@ -8,7 +8,7 @@ export default class App extends Component {
         const CommentBoxContainer = CommentBox.Container;
         return ( 
                 <div className="app_shell" > 
-                    React simple starter 
+                    <h1>React simple starter </h1>    
                     <CommentListContainer/>
                     <CommentBoxContainer/>
                 </div>

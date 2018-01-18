@@ -30,7 +30,7 @@ export default class CommentBox extends Component {
                         name="comment_box_textarea" 
                         id="app_comment_box_textarea" 
                         cols="30" 
-                        rows="10"
+                        rows="2"
                         value={this.state.comment}
                         onChange={this._onChangeHandler.bind(this)}
                     />

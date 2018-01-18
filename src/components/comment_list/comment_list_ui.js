@@ -5,16 +5,19 @@ export default class CommentList extends Component {
         super(props);
 
         this.state = {
-            comments: props.comments || ['My great first default comment']
+            comments: props.comments || []
         };
     }
 
     render() {
-        const listItems = this.state.comments.map(comment => (<li key={comment} >{comment}</li>));
+        const listItems = this.props.comments.map(comment => (<li key={comment} >{comment}</li>));
         return ( 
-            <ul className="comment_list">
-                {listItems}
-            </ul>
+            <div className="comment_list">
+                <h2>Comments list:</h2>
+                    <ul >
+                        {listItems}
+                    </ul>
+            </div>
         );
     }
 }
