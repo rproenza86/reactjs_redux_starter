@@ -1,5 +1,17 @@
 # reactjs_redux_starter
+> ReactJS and redux advanced proof of concept.
+## Implemented concepts:
+### ReactJS:
+* Dumb component
+* Containers
+* Local state
+* App state
 
+### Redux:
+* Actions
+* Reducers
+* Store
+* Middleware
 
 ### Getting Started
 
