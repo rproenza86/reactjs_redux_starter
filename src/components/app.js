@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import CommentBox from './comment_box';
-import CommentList from './comment_list';
+import Header from './header';
 
 export default class App extends Component {
     render() {
-        const CommentListContainer = CommentList.Container;
-        const CommentBoxContainer = CommentBox.Container;
+        const [
+                HeaderContainer
+            ] = [ 
+                    Header.Container
+                ];
         return ( 
                 <div className="app_shell" > 
-                    <h1>React simple starter </h1>    
-                    <CommentListContainer/>
-                    <CommentBoxContainer/>
+                    <HeaderContainer/>
+                    <br/>  
+                    <h1>React simple starter </h1>  
+                    {this.props.children}
                 </div>
             );
         }
