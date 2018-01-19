@@ -24,6 +24,9 @@ export default class Header extends Component {
                         <Link to="/resources">Resources</Link>
                     </li>
                     <li className="nav-item">
+                        <Link to="/comments">Comments</Link>
+                    </li>
+                    <li className="nav-item">
                         {this.authButton()}
                     </li>
                 </ul>
