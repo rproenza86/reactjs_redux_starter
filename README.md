@@ -1,5 +1,8 @@
 # reactjs_redux_starter
 > ReactJS and redux advanced proof of concept.
+
+[![Build Status](https://travis-ci.org/rproenza86/reactjs_redux_starter.svg?branch=master)](https://travis-ci.org/rproenza86/reactjs_redux_starter)
+
 ## Implemented concepts:
 ### ReactJS:
 * Dumb component
