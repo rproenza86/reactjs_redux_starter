@@ -9,6 +9,7 @@
 * Containers
 * Local state
 * App state
+* ReactJS router
 
 ### Redux:
 * Actions
