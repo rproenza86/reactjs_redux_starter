@@ -1,14 +1,20 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { authenticate } from '../../actions/index';
 
 import HeaderUI from './header_ui';
 
 const mapStateToProps = (state) => {
-    return {};
+    return {
+        authenticated: state.authenticated
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    const actionCreators = {
+        authenticate
+    };
+    return bindActionCreators(actionCreators, dispatch);
 };
 
 const HeaderContainer = connect(

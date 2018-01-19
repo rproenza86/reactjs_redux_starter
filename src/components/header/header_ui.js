@@ -7,7 +7,11 @@ export default class Header extends Component {
     }
 
     authButton() {
-        return <button>Sign In</button>;
+        const authButton = this.props.authenticated 
+                            ?  <button onClick={() => this.props.authenticate(false)}>Sign Out</button> 
+                            : <button onClick={() => this.props.authenticate(true)}>Sign In</button>
+
+        return authButton;
     }
 
     render() {
