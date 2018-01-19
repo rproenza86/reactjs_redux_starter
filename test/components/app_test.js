@@ -27,5 +27,5 @@ describe('App', () => { // use 'describe' to group similar tests
     // it('show a comment list', () => {
     //   expect(component.find('.comment_list')).to.exist;
     // });
-    // TODO: Create test based on routes
+    // TODO: Create test based on routes.
 });
