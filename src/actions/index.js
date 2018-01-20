@@ -3,6 +3,7 @@ import {
     CHANGE_AUTH,
     FETCH_USERS
 } from './actionsTypes';
+import axios from 'axios';
 
 export const saveComment = (comment) => {
     return {
@@ -19,13 +20,9 @@ export const authenticate = (isLoggedIn = false) => {
 };
 
 export const fetchUsers = (users = []) => {
-    const mockUsers = [
-        {name: 'Pepe'},
-        {name: 'Pipa'},
-        {name: 'Pipe'}
-    ];
+    const usersList = axios.get('https://jsonplaceholder.typicode.com/users'); // This will return a promise, so we need a middleware to handle the promise
     return {
         type: FETCH_USERS,
-        payload: mockUsers
+        payload: usersList
     };
 };

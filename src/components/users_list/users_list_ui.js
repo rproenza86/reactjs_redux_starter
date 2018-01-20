@@ -11,7 +11,7 @@ export default class UsersList extends Component {
                 <h4 className="card-title">
                     {user.name}
                 </h4>
-                <p className="card-text">Cheese factory</p>
+                <p className="card-text">{user.company.catchPhrase}</p>
                 <a className="btn btn-primary">Email</a>
             </div>
         );

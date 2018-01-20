@@ -11,8 +11,9 @@ import Users from './components/users_list';
 import requeiredAuth from './components/common/require_auth';
 import Comments from './components/comment_list';
 import reducers from './reducers';
+import Async from './middleware/async';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(Async)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers,/* preloadedState, */
