@@ -17,3 +17,15 @@ export const authenticate = (isLoggedIn = false) => {
         payload: isLoggedIn
     };
 };
+
+export const fetchUsers = (users = []) => {
+    const mockUsers = [
+        {name: 'Pepe'},
+        {name: 'Pipa'},
+        {name: 'Pipe'}
+    ];
+    return {
+        type: FETCH_USERS,
+        payload: mockUsers
+    };
+};
