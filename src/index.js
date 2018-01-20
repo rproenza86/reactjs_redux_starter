@@ -7,11 +7,13 @@ import { Router, Route, browserHistory } from 'react-router';
 import App from './components/app';
 import Services from './components/services';
 import Resources from './components/resources';
+import Users from './components/users_list';
 import requeiredAuth from './components/common/require_auth';
 import Comments from './components/comment_list';
 import reducers from './reducers';
+import Async from './middleware/async';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(Async)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers,/* preloadedState, */
@@ -21,6 +23,7 @@ ReactDOM.render(
         <Route path="services" component={Services.UI}/>
         <Route path="resources" component={ requeiredAuth(Resources.Container) }/>
         <Route path="comments" component={Comments.Container}/>
+        <Route path="users" component={Users.Container}/>
       </Route>
     </Router>  
   </Provider>
