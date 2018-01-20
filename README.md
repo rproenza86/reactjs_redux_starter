@@ -9,6 +9,9 @@
 * Containers
 * Local state
 * App state
+* ReactJS router
+* Higher-order component (HOC)
+* Context
 
 ### Redux:
 * Actions
