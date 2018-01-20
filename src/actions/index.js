@@ -1,6 +1,7 @@
 import { 
     SAVE_COMMENT,
-    CHANGE_AUTH
+    CHANGE_AUTH,
+    FETCH_USERS
 } from './actionsTypes';
 
 export const saveComment = (comment) => {
