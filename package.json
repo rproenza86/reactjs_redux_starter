@@ -5,9 +5,11 @@
     "main": "index.js",
     "repository": "git@github.com:rproenza86/reactjs_redux_starter.git",
     "scripts": {
+        "client_install": "cd client && npm install",
         "start": "cd client && npm start",
         "test": "cd client && npm test",
-        "test:watch": "cd client && npm run test:watch"
+        "test:watch": "cd client && npm run test:watch",
+        "server_install": "cd client && npm install"
     },
     "author": "",
     "license": "ISC",

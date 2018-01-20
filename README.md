@@ -33,6 +33,6 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 ```
 > git clone git@github.com:rproenza86/reactjs_redux_starter.git
 > cd reactjs_redux_starter
-> npm install
+> npm run client_install
 > npm start
 ```
