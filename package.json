@@ -7,9 +7,11 @@
     "scripts": {
         "client_install": "cd client && npm install",
         "start": "cd client && npm start",
-        "test": "cd client && npm test",
+        "test": "cd client && npm i && npm test",
         "test:watch": "cd client && npm run test:watch",
-        "server_install": "cd client && npm install"
+        "server_install": "cd server && npm install",
+        "server_start": "cd server && npm run watch-debug",
+        "server_build": "cd server && npm build"
     },
     "author": "",
     "license": "ISC",
