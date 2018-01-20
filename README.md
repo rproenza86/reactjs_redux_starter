@@ -10,6 +10,7 @@
 * Local state
 * App state
 * ReactJS router
+* Higher-order component (HOC)
 
 ### Redux:
 * Actions
