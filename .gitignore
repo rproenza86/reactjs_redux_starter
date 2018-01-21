@@ -1,6 +1,7 @@
 /node_modules
 /client/node_modules
 /server/node_modules
+/server/dist
 bundle.js
 npm-debug.log
 .DS_Store
