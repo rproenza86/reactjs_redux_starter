@@ -10,7 +10,8 @@
         "test": "cd client && npm i && npm test",
         "test:watch": "cd client && npm run test:watch",
         "server_install": "cd server && npm install",
-        "server_start": "cd server && npm run watch-debug",
+        "server_start": "cd server && npm run start",
+        "server_dev": "cd server && npm run dev",
         "server_build": "cd server && npm build"
     },
     "author": "",
