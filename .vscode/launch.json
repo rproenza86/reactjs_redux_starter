@@ -6,11 +6,65 @@
     "configurations": [
 
         {
-            "type": "chrome",
+            "name": "SERVER: Attach to local node",
+            "type": "node",
+            "request": "attach",
+            "restart": true,
+            "outFiles": ["${workspaceRoot}/server/build/**/*.js"],
+            "sourceMaps": true,
+            "address": "127.0.0.1",
+            "port": 5858
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "SERVER: Attach to docker remote",
+            "address": "127.0.0.1",
+            "port": 5858,
+            "sourceMaps": true,
+            "localRoot": "${workspaceRoot}/build/**/*.js",
+            "remoteRoot": "/home/appDev/build/**/*.js"
+        },
+        {
+            "name": "SERVER: Start local server",
+            "type": "node",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080/webpack-dev-server/",
-            "webRoot": "${workspaceFolder}"
+            "program": "${workspaceRoot}/server.ts",
+            "outFiles": ["${workspaceRoot}/build/**/*.js"],
+            "stopOnEntry": false,
+            "args": ["HOST: 'w2.makemydealpreview.com'", "PORT: 5601"],
+            "cwd": "${workspaceRoot}/",
+            // "preLaunchTask": "build",
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "local",
+                "API_ENV": "dev"
+            },
+            "console": "internalConsole",
+            "sourceMaps": true
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "address": "192.168.99.100",
+            "name": "SERVER: Attach to kubernetes remote",
+            "port": 30006,
+            "restart": true,
+            "localRoot": "${workspaceRoot}/build/**/*.js",
+            "remoteRoot": "/home/appDev/build/**/*.js",
+            "sourceMaps": true
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "SERVER: Attach to local server",
+            "port": 5858,
+            "restart": true,
+            "localRoot": "${workspaceRoot}/build/**/*.js",
+            "sourceMaps": true
         }
     ]
 }

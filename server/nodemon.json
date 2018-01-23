@@ -1,0 +1,7 @@
+{
+    "ignore": ["**/*.test.ts", "**/*.spec.ts", ".git", "node_modules", "build"],
+    "watch": ["server.ts", "config", "controllers", "models", "routes"],
+    "exec": "npm run build && npm run start-dev",
+    "ext": "ts js",
+    "verbose": false
+}

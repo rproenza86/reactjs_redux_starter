@@ -1,0 +1,27 @@
+#Step 1.
+FROM mhart/alpine-node:latest
+
+#Step 2:
+# Labels - Useful for tagging instances and having metadata accessible
+LABEL version="1.0.1"
+LABEL description="This is a Docker Image for the users's api to be use in Kubernetes"
+LABEL maintainer "Raul R. Proenza <raul.r.proenza@gmail.com>"
+
+#Step 3.
+#Creation of enviroments variables
+ENV HOME=/home/appDev
+ENV SOURCE_APP_PATH=.
+ENV NODE_ENV development
+
+#Step 7.
+WORKDIR ${HOME}
+
+#Step 8.
+ADD ${SOURCE_APP_PATH} ${HOME}
+
+#Step 9.
+EXPOSE 3002
+EXPOSE 5858
+
+RUN cd ${HOME} && npm install
+CMD [ "npm", "run", "dev"  ]

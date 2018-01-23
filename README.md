@@ -33,6 +33,13 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 ```
 > git clone git@github.com:rproenza86/reactjs_redux_starter.git
 > cd reactjs_redux_starter
-> npm install
+> npm run client_install
 > npm start
 ```
+
+### TODO:
+* Dockerize the app 
+* Publish app in docker hub registry
+* Add github release stage in the CI process
+* Add docker hub publish stage in the CI process
+

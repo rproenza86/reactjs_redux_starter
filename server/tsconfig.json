@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+      "outDir": "./build/",
+      "sourceMap": true, // generates '.map' file
+      "noImplicitAny": false,
+      "noUnusedLocals": false, // errors for unused locals
+      "module": "commonjs",
+      "target": "es5"
+    },
+    "include": [
+      "./**/*"
+    ],
+    "exclude": [
+      "node_modules/",
+      "build/"
+    ]
+}
