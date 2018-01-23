@@ -1,10 +1,11 @@
 import User from '../models/User';
+import { Request, Response, NextFunction } from 'express';
 
 /**
  * GET /api/v1/users/
  * Get full users list
  */
-export function getUsersList(req, res, next) {
+export function getUsersList(req: Request, res: Response, next: NextFunction) {
   const id = req.params.id;
 
   User.find()
@@ -20,7 +21,7 @@ export function getUsersList(req, res, next) {
  * GET /api/v1/users/:id
  * Get user by id
  */
-export function getUserById(req, res, next) {
+export function getUserById(req: Request, res: Response, next: NextFunction) {
   const id = req.params.id;
 
   User.findById(id)
@@ -36,7 +37,7 @@ export function getUserById(req, res, next) {
  * POST /api/v1/users
  * Create user
  */
-export function createUser(req, res, next) {
+export function createUser(req: Request, res: Response, next: NextFunction) {
   const name = req.body.name;
   const username = req.body.username;
   const email = req.body.email;
@@ -62,7 +63,7 @@ export function createUser(req, res, next) {
  * PUT /api/v1/users
  * Update user by id 
  */
-export function updateUser(req, res, next) {
+export function updateUser(req: Request, res: Response, next: NextFunction) {
   const id = req.params.id;
 
   User.findByIdAndUpdate(id, req.body)
@@ -78,7 +79,7 @@ export function updateUser(req, res, next) {
  * DELETE /api/v1/users/:id
  * Update user by id 
  */
-export function deleteUser(req, res, next) {
+export function deleteUser(req: Request, res: Response, next: NextFunction) {
   const id = req.params.id;
 
   User.findByIdAndRemove(id)
@@ -94,7 +95,7 @@ export function deleteUser(req, res, next) {
  * GET /api/v1/healthz
  * Kubernetes livenessProbe
  */
-export function livenessProbe(req, res, next) {
+export function livenessProbe(req: Request, res: Response, next: NextFunction) {
   res.status(200).json({ server_status: "API server alive." });
 }
 
@@ -102,6 +103,6 @@ export function livenessProbe(req, res, next) {
  * GET /api/v1/readiness
  * Kubernetes readinessProbe
  */
-export function readinessProbe(req, res, next) {
+export function readinessProbe(req: Request, res: Response, next: NextFunction) {
   res.status(200).json({ server_status: "API Ready." });
 }

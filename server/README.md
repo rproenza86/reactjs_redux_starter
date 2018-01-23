@@ -40,3 +40,12 @@ The goal of this app is to be dockerized and to works in a Kubernetes cluster
 
 `npm run dev`
 
+### TODO:
+* Unit test
+* Password encryptation
+* Json token implementation
+* Joi validation
+* Types assignation
+* Code refactorization, convert controller into classes and apply es6 built-in functions
+* Review tsconfig file to add missing options
+* Add to travis the server test stage

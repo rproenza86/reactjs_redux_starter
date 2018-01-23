@@ -36,3 +36,10 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 > npm run client_install
 > npm start
 ```
+
+### TODO:
+* Dockerize the app 
+* Publish app in docker hub registry
+* Add github release stage in the CI process
+* Add docker hub publish stage in the CI process
+
