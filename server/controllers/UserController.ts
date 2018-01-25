@@ -49,25 +49,36 @@ export function getUserById(req: Request, res: Response, next: NextFunction) {
  * Create user
  */
 export function createUser(req: Request, res: Response, next: NextFunction) {
-  const name = req.body.name;
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
-
-  const user: IUser = new User({
+  const {
     name,
     username,
     email,
     password
-  }) as IUser;
+  } = req.body;
 
-  user.save()
-  .then((user: IUser = <IUser>{}) => {
-    res.status(201).json({ user });
-  })
-  .catch((err) => {
-    res.status(500).json({ err });
-  })
+  User.findOne({email: email.toLowerCase()}, (err, alreadyExistingUser) => {
+    if(err) return next(err);
+
+    if(alreadyExistingUser) {
+      return res.status(422).json({ error: `Email '${email}' is already in use` });
+    }
+
+    const user: IUser = new User({
+      name,
+      username,
+      email,
+      password
+    }) as IUser;
+
+    user.save()
+    .then((user: IUser = <IUser>{}) => {
+      res.status(201).json({ user });
+    })
+    .catch((err) => {
+      res.status(500).json({ err });
+    });
+
+  });
 }
 
 /**
