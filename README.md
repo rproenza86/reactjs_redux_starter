@@ -28,6 +28,8 @@
 * Mongodb
 * Docker
 * Kubernetes
+
+### Continuous Integration and Continuous Deployment( CI/CD ):
 * TravisCI
 
 ## Unit test
