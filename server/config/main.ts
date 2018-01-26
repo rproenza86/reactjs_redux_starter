@@ -14,7 +14,7 @@ const mongoURI = process.env.MONGO_SERVICE_HOST || "localhost:27017/blog-api";
   test_port: 3022,
 
   // secret for jwt
-  secret: 'secret'
+  secret: process.env.secret || 'local_super_secret'
 };
 
 export default config;

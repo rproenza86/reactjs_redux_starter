@@ -1,4 +1,4 @@
-import { genSalt, hash } from 'bcrypt-nodejs';
+import { genSalt, hash, compare } from 'bcrypt-nodejs';
 import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
@@ -49,6 +49,24 @@ UserSchema.pre('save', function (next) {
     });
   });
 })
+
+/**
+ * @function comparePassword is going to use the user's request password, convert it to hash and compare it with 
+ *                           the encrypted user's password stored in the DB
+ */
+UserSchema.methods.comparePassword = function(candidatePassword: string, callback: (err, isMatch)=>any){
+  const password = this.password;
+  compare(candidatePassword, password, (err, isMatch) => {
+    
+    if (err) {
+      return !!callback(err, null);
+    }
+
+    return !!callback(null, isMatch);
+  });
+
+  return false;
+}
 
 const UserModelClass = mongoose.model('User', UserSchema);
 
