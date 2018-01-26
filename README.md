@@ -19,6 +19,17 @@
 * Store
 * Middleware
 
+### Server Technologies:
+* es6
+* Typescript
+* NodeJS
+* ExpressJS
+* JSON Web Tokens
+* Mongodb
+* Docker
+* Kubernetes
+* TravisCI
+
 ## Unit test
 * Mocha as test runner
 * Chai as assertion library
