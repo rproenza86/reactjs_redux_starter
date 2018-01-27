@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'; 
 import { Router, Route, browserHistory } from 'react-router'; 
+import reducers from './reducers';
+import Async from './middleware/async';
 
 import App from './components/app';
 import Services from './components/services';
@@ -10,8 +12,7 @@ import Resources from './components/resources';
 import Users from './components/users_list';
 import requeiredAuth from './components/common/require_auth';
 import Comments from './components/comment_list';
-import reducers from './reducers';
-import Async from './middleware/async';
+import SignIn from './components/signin';
 
 const createStoreWithMiddleware = applyMiddleware(Async)(createStore);
 
@@ -24,6 +25,7 @@ ReactDOM.render(
         <Route path="resources" component={ requeiredAuth(Resources.Container) }/>
         <Route path="comments" component={Comments.Container}/>
         <Route path="users" component={Users.Container}/>
+        <Route path="signin" component={SignIn.Container}/>
       </Route>
     </Router>  
   </Provider>
