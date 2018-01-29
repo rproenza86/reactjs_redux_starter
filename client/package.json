@@ -32,11 +32,12 @@
         "axios": "^0.17.1",
         "babel-preset-stage-1": "^6.1.18",
         "lodash": "^3.10.1",
-        "material-ui": "^0.20.0",
+        "material-ui": "^1.0.0-beta.30",
         "react": "^0.14.3",
         "react-dom": "^0.14.3",
         "react-redux": "4.3.0",
         "react-router": "^2.0.1",
+        "react-scrollbar-size": "^2.0.2",
         "redux": "^3.0.4",
         "redux-form": "^7.2.1",
         "redux-form-material-ui": "^4.3.3"
