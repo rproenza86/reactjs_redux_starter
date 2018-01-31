@@ -2,12 +2,21 @@ import React, { Component } from 'react';
 import SigninForm from './signin_form';
 
 export default class Signin extends Component {
+    static contextTypes = { 
+        router: React.PropTypes.object
+    }
+
     submit = (values) => {
         console.log(values);
+        this.props.authenticate(true);
+        this.context.router.push('/'); // Go to the protected route
     }
+
     render() {
       return (
-        <SigninForm onSubmit={this.submit} />
+            <div>
+                <SigninForm onSubmit={this.submit} />
+            </div>
       )
     }
 }

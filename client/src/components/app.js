@@ -11,8 +11,6 @@ export default class App extends Component {
         return ( 
                 <div className="app_shell" > 
                     <HeaderContainer/>
-                    <br/>  
-                    <h1>React simple starter </h1>  
                     {this.props.children}
                 </div>
             );

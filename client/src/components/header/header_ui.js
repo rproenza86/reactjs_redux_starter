@@ -22,14 +22,27 @@ const styles = {
 };
 
 export default class Header extends Component {
-    constructor(props) {
-        super(props);
+    static contextTypes = { 
+        router: React.PropTypes.object
+    }
+
+    goToSignIn(){
+        if(!this.props.authenticated)
+            this.context.router.push('/signin');
+    }
+
+    goToSignOut(){
+        if(this.props.authenticated){
+            this.props.authenticate(false);
+            this.context.router.push('/');
+        }
     }
 
     authButton() {
+        // ?  <button onClick={() => this.props.authenticate(false)}>Sign Out</button> 
         const authButton = this.props.authenticated 
-                            ?  <button onClick={() => this.props.authenticate(false)}>Sign Out</button> 
-                            : <button onClick={() => this.props.authenticate(true)}>Sign In</button>
+                            ?  <button onClick={() => this.goToSignOut()}>Sign Out</button> 
+                            : <button onClick={() => this.goToSignIn()}>Sign In</button>
 
         return authButton;
     }
