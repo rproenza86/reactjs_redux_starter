@@ -7,19 +7,28 @@ export default class Signin extends Component {
     }
 
     submit = (values) => {
-        console.log(values);
-        // this.props.authenticate(true);
         this.props.signinUser(values);
-        this.context.router.push('/resources'); // Go to the protected route
     }
 
     signup = () => {
         this.context.router.push('/signup');
     }
 
+    renderAlert () {
+        if (this.props.errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    <strong>Sorry! </strong>
+                    { this.props.errorMessage }
+                </div> 
+            );
+        }
+    }
+
     render() {
       return (
             <div>
+                {this.renderAlert()}
                 <SigninForm onSubmit={this.submit} handleSignup={this.signup}/>
             </div>
       )

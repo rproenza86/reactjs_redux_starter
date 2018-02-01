@@ -2,11 +2,13 @@ import {
     SAVE_COMMENT,
     CHANGE_AUTH,
     FETCH_USERS,
-    SIGNIN_USER
+    SIGNIN_USER,
+    AUTH_ERROR
 } from './actionsTypes';
 import axios from 'axios';
 import config from '../config/main';
 import { urlBuilder } from '../common/utils';
+import { browserHistory } from 'react-router';
 
 export const saveComment = (comment) => {
     return {
@@ -38,9 +40,28 @@ export const fetchUsers = (users = []) => {
  * @param {email, password} 
  */
 export const signinUser = ({ username, password }) => {
-
     return function(dispatch) {
         const api_root_url =  urlBuilder(config.apiServer);
-        axios.post(`${api_root_url}/users/signin`, { username, password });
+
+        axios.post(`${api_root_url}/users/signin`, { username, password })
+            .then( response => {
+                const isSuccessResponse = response && response.data && response.data.success === true;
+                
+                if (isSuccessResponse) {
+                    localStorage.setItem('token', response.data.token);
+                    dispatch(authenticate(true));
+                    browserHistory.push('/resources'); // Best practice to interact with the react-router component instead of access it using the context
+                }
+            })
+            .catch(()=> {
+                dispatch(authError('Incorrect Login Information.'));
+            });
     }
+};
+
+export const authError = (error = '') => {
+    return {
+        type: AUTH_ERROR,
+        payload: error
+    };
 };

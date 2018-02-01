@@ -6,7 +6,8 @@ import SigninUI from './signin_ui';
 
 const mapStateToProps = (state) => {
     return {
-        authenticated: state.authenticated
+        authenticated: state.authenticated,
+        errorMessage: state.authenticated.error
     };
 };
 

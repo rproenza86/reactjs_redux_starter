@@ -1,5 +1,6 @@
 import { 
-    CHANGE_AUTH
+    CHANGE_AUTH,
+    AUTH_ERROR
 }  from '../actions/actionsTypes';
 
 export function authenticationReducer(state = false, action = {}) {
@@ -7,6 +8,11 @@ export function authenticationReducer(state = false, action = {}) {
         case CHANGE_AUTH:
             {
                 return action.payload;
+            }
+        case AUTH_ERROR:
+            {
+                console.log(action)
+                return {error: action.payload};
             }
         default:
             {
