@@ -3,7 +3,8 @@ import {
     CHANGE_AUTH,
     FETCH_USERS,
     SIGNIN_USER,
-    AUTH_ERROR
+    AUTH_ERROR,
+    FETCH_API_USERS
 } from './actionsTypes';
 import axios from 'axios';
 import config from '../config/main';
@@ -85,3 +86,26 @@ export const signUpUser = ({email, username, password, name}) => {
             });
     }
 }
+
+export const fetchApiUsersList = () => {
+    return function(dispatch) {
+        const api_root_url =  urlBuilder(config.apiServer);
+
+        axios.get(`${api_root_url}/users`, {
+            headers: { authorization: localStorage.getItem('token') }
+        })
+            .then( response => {
+                const isSuccessResponse = response && response.data && response.data.success === true;
+                
+                if (isSuccessResponse) {
+                    dispatch({
+                        type: FETCH_API_USERS,
+                        payload: response.data.users
+                    })
+                }
+            })
+            .catch(()=> {
+                dispatch(authError('Incorrect SignIn Information.'));
+            });
+    }
+};
