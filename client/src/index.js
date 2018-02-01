@@ -34,6 +34,7 @@ import Users from './components/users_list';
 import requeiredAuth from './components/common/require_auth';
 import Comments from './components/comment_list';
 import SignIn from './components/signin';
+import SignUp from './components/signup';
 
 const createStoreWithMiddleware = applyMiddleware(Async)(createStore);
 
@@ -48,6 +49,7 @@ ReactDOM.render(
           <Route path="comments" component={Comments.Container}/>
           <Route path="users" component={Users.Container}/>
           <Route path="signin" component={SignIn.Container}/>
+          <Route path="signup" component={SignUp.Container}/>
         </Route>
       </Router>  
     </Provider>

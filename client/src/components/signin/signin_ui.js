@@ -12,10 +12,14 @@ export default class Signin extends Component {
         this.context.router.push('/resources'); // Go to the protected route
     }
 
+    signup = () => {
+        this.context.router.push('/signup');
+    }
+
     render() {
       return (
             <div>
-                <SigninForm onSubmit={this.submit} />
+                <SigninForm onSubmit={this.submit} handleSignup={this.signup}/>
             </div>
       )
     }

@@ -34,14 +34,22 @@ const styles = theme => ({
 const validate = values => {
     const errors = {}
     const requiredFields = [
+      'name',
       'username',
-      'email'
+      'email',
+      'password'
     ]
     requiredFields.forEach(field => {
       if (!values[field]) {
         errors[field] = 'Required'
       }
     })
+    if (
+      values.email &&
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
+      errors.email = 'Invalid email address'
+    }
     return errors
 }
 
@@ -62,8 +70,8 @@ const renderTextField = ({
     />
   )
 
-let SigninForm = props => {
-    const { handleSubmit, handleSignup, pristine, reset, submitting, classes } = props
+let SignupForm = props => {
+    const { handleSubmit, pristine, reset, submitting, classes } = props
     const spacing = 16;
     return (
 
@@ -73,7 +81,13 @@ let SigninForm = props => {
                     <Paper className={classes.paper}>
                         <form onSubmit={ handleSubmit } className={classes.container}>
                             <div>
+                                <Field name="name" component={renderTextField} label="Full Name" />
+                            </div>
+                            <div>
                                 <Field name="username" component={renderTextField} label="User Name" />
+                            </div>
+                            <div>
+                                <Field name="email" component={renderTextField} label="Email" />
                             </div>
                             <div>
                                 <Field name="password" component={renderTextField} label="Password" />
@@ -81,15 +95,11 @@ let SigninForm = props => {
 
                             <div>
                                 <Button raised className={classes.button} type="submit" disabled={pristine || submitting}>
-                                    Sing In
+                                    Submit
                                 </Button>
 
                                 <Button raised className={classes.button} type="button" disabled={pristine || submitting} onClick={reset}>
                                     Clear Values
-                                </Button>
-
-                                <Button raised className={classes.button} type="button" onClick={ handleSignup }>
-                                    Sign Up
                                 </Button>
                             </div>
                         </form>
@@ -100,11 +110,11 @@ let SigninForm = props => {
     )
 }
 
-SigninForm = reduxForm({
+SignupForm = reduxForm({
   // a unique name for the form
-  form: 'signing',
-  fields: ['username', 'password'],
+  form: 'signup',
+  fields: ['email', 'username', 'password', 'name'],
   validate
-})(SigninForm)
+})(SignupForm)
 
-export default withStyles(styles)(SigninForm);
+export default withStyles(styles)(SignupForm);
