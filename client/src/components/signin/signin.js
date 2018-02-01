@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { authenticate } from '../../actions/index';
+import { authenticate, signinUser } from '../../actions/index';
 
 import SigninUI from './signin_ui';
 
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     const actionCreators = {
-        authenticate
+        authenticate,
+        signinUser
     };
     return bindActionCreators(actionCreators, dispatch);
 };

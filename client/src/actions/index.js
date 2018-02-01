@@ -1,9 +1,12 @@
 import { 
     SAVE_COMMENT,
     CHANGE_AUTH,
-    FETCH_USERS
+    FETCH_USERS,
+    SIGNIN_USER
 } from './actionsTypes';
 import axios from 'axios';
+import config from '../config/main';
+import { urlBuilder } from '../common/utils';
 
 export const saveComment = (comment) => {
     return {
@@ -25,4 +28,19 @@ export const fetchUsers = (users = []) => {
         type: FETCH_USERS,
         payload: usersList
     };
+};
+
+/**
+ * Because the introduction of redux-thunk now the action return a function instead of an object
+ * 
+ * My goal here is to create an action whit certain business logic an dispatch other actions accordingly
+ * 
+ * @param {email, password} 
+ */
+export const signinUser = ({ username, password }) => {
+
+    return function(dispatch) {
+        const api_root_url =  urlBuilder(config.apiServer);
+        axios.post(`${api_root_url}/users/signin`, { username, password });
+    }
 };

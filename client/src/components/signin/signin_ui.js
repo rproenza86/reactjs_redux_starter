@@ -8,7 +8,8 @@ export default class Signin extends Component {
 
     submit = (values) => {
         console.log(values);
-        this.props.authenticate(true);
+        // this.props.authenticate(true);
+        this.props.signinUser(values);
         this.context.router.push('/resources'); // Go to the protected route
     }
 

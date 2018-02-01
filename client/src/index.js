@@ -9,6 +9,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import purple from 'material-ui/colors/purple';
 import green from 'material-ui/colors/green';
 import Reboot from 'material-ui/Reboot';
+import reduxThunk from 'redux-thunk'; // Redux middleware
 
 // A theme with custom primary and secondary color.
 // It's optional.
@@ -36,7 +37,7 @@ import Comments from './components/comment_list';
 import SignIn from './components/signin';
 import SignUp from './components/signup';
 
-const createStoreWithMiddleware = applyMiddleware(Async)(createStore);
+const createStoreWithMiddleware = applyMiddleware(Async, reduxThunk)(createStore);
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme} >
