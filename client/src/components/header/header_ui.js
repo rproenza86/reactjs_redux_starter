@@ -44,7 +44,7 @@ class Header extends Component {
 
     authButton() {
         const { classes } = this.props;
-        const authButton = this.props.authenticated 
+        const authButton = this.props.authenticated === true && !this.props.authenticated.error
                             ? <Button raised className={classes.button} type="button" onClick={() => this.goToSignOut()}> 
                                 <i className="fas fa-sign-out-alt"></i>
                                 &nbsp; Sign Out 

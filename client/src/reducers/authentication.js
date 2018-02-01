@@ -11,7 +11,6 @@ export function authenticationReducer(state = false, action = {}) {
             }
         case AUTH_ERROR:
             {
-                console.log(action)
                 return {error: action.payload};
             }
         default:

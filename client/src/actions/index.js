@@ -32,6 +32,16 @@ export const fetchUsers = (users = []) => {
     };
 };
 
+const _processUsersApiResponse = (response, dispatch) => {
+    const isSuccessResponse = response && response.data && response.data.success === true;
+                
+    if (isSuccessResponse) {
+        localStorage.setItem('token', response.data.token);
+        dispatch(authenticate(true));
+        browserHistory.push('/resources'); // Best practice to interact with the react-router component instead of access it using the context
+    }
+}
+
 /**
  * Because the introduction of redux-thunk now the action return a function instead of an object
  * 
@@ -45,16 +55,10 @@ export const signinUser = ({ username, password }) => {
 
         axios.post(`${api_root_url}/users/signin`, { username, password })
             .then( response => {
-                const isSuccessResponse = response && response.data && response.data.success === true;
-                
-                if (isSuccessResponse) {
-                    localStorage.setItem('token', response.data.token);
-                    dispatch(authenticate(true));
-                    browserHistory.push('/resources'); // Best practice to interact with the react-router component instead of access it using the context
-                }
+                _processUsersApiResponse(response, dispatch);
             })
             .catch(()=> {
-                dispatch(authError('Incorrect Login Information.'));
+                dispatch(authError('Incorrect SignIn Information.'));
             });
     }
 };
@@ -65,3 +69,19 @@ export const authError = (error = '') => {
         payload: error
     };
 };
+
+export const signUpUser = ({email, username, password, name}) => {
+    return function(dispatch) {
+        const api_root_url =  urlBuilder(config.apiServer);
+
+        axios.post(`${api_root_url}/users`, { email, username, password, name })
+            .then( response => {
+                _processUsersApiResponse(response, dispatch);
+            })
+            .catch( error => {
+                const { response } = error;
+                const errorMessage = response.data.err || response.data.error || 'Error in the Sign Up process.'
+                dispatch(authError(errorMessage));
+            });
+    }
+}

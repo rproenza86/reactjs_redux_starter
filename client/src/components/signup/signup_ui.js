@@ -6,15 +6,25 @@ export default class Signup extends Component {
         router: React.PropTypes.object
     }
 
-    submit = (values) => {
-        console.log(values);
-        this.props.authenticate(true);
-        this.context.router.push('/signin'); // Go to the protected route
+    submit = (formValues) => {
+        this.props.signUpUser(formValues);
+    }
+
+    renderAlert () {
+        if (this.props.errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    <strong>Sorry! </strong>
+                    { this.props.errorMessage }
+                </div> 
+            );
+        }
     }
 
     render() {
       return (
             <div>
+                {this.renderAlert()}
                 <SignupForm onSubmit={this.submit} />
             </div>
       )

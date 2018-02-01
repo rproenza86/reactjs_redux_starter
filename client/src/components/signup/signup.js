@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { authenticate } from '../../actions/index';
+import { authenticate, signUpUser } from '../../actions/index';
 
 import SignupUI from './signup_ui';
 
 const mapStateToProps = (state) => {
     return {
-        authenticated: state.authenticated
+        authenticated: state.authenticated,
+        errorMessage: state.authenticated.error
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     const actionCreators = {
-        authenticate
+        authenticate,
+        signUpUser
     };
     return bindActionCreators(actionCreators, dispatch);
 };
