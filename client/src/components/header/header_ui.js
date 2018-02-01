@@ -5,8 +5,8 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/Menu';
+import IconButton from 'material-ui/IconButton';
 
 const styles = {
     root: {
@@ -21,7 +21,11 @@ const styles = {
     },
 };
 
-export default class Header extends Component {
+const iconStyles = {
+    marginRight: 12
+  };
+
+class Header extends Component {
     static contextTypes = { 
         router: React.PropTypes.object
     }
@@ -39,10 +43,16 @@ export default class Header extends Component {
     }
 
     authButton() {
-        // ?  <button onClick={() => this.props.authenticate(false)}>Sign Out</button> 
+        const { classes } = this.props;
         const authButton = this.props.authenticated 
-                            ?  <button onClick={() => this.goToSignOut()}>Sign Out</button> 
-                            : <button onClick={() => this.goToSignIn()}>Sign In</button>
+                            ? <Button raised className={classes.button} type="button" onClick={() => this.goToSignOut()}> 
+                                <i className="fas fa-sign-out-alt"></i>
+                                &nbsp; Sign Out 
+                              </Button>
+                            : <Button raised className={classes.button} type="button" onClick={() => this.goToSignIn()}>
+                                <i className="fas fa-sign-in-alt"></i>
+                                &nbsp; Sign In 
+                              </Button>
 
         return authButton;
     }
@@ -50,7 +60,7 @@ export default class Header extends Component {
     render() {
         const { classes } = this.props;
         return ( 
-            <AppBar position="static" color="default">
+            <AppBar title="ReactJS + Redux = Prove of concepts" position="static" color="default">
                 <Toolbar>
                     <nav className="nav navbar-light">
                         <ul className="nav navbar-nav">
@@ -79,3 +89,5 @@ export default class Header extends Component {
         );
     }
 }
+
+export default withStyles({})(Header);
