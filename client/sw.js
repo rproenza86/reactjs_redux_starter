@@ -34,3 +34,9 @@ self.addEventListener('activate', event => {
         })
     );
 });
+
+self.addEventListener('message', event => {
+    // Perform install steps without to wait next reload of app visit
+    if (event.data.action === 'skipWaiting')
+        self.skipWaiting();
+});
