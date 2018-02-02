@@ -32,6 +32,10 @@
 ### Continuous Integration and Continuous Deployment( CI/CD ):
 * TravisCI
 
+### Progressive Web App( pwa ):
+* Service workers( offline first capabilities )
+* App manifest( Add your app to the Home Screen)
+
 ## Unit test
 * Mocha as test runner
 * Chai as assertion library
