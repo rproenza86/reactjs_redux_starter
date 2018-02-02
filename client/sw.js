@@ -20,3 +20,17 @@ self.addEventListener('install', event => {
         })
     );
 });
+
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.filter(cacheName => {
+                    return cacheName.startsWith('reactjs_redux_starter-') && !cacheWhitelist.includes(cacheName);
+                }).map(cacheName => {
+                    return caches.delete(cacheName);
+                })
+            );
+        })
+    );
+});
