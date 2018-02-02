@@ -1,6 +1,6 @@
 {
     "name": "React_Redux PWA Example",
-    "short_name": "React_Redux_PWA",
+    "short_name": "ReactPWA",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#666666",
