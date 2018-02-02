@@ -1,26 +1,27 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchApiUsersList } from '../../actions/index';
+import { authenticate, signUpUser } from '../../actions/index';
 
-import ResourcesUI from './resources_ui';
+import SignupUI from './signup_ui';
 
 const mapStateToProps = (state) => {
     return {
         authenticated: state.authenticated,
-        users: state.api_users,
+        errorMessage: state.authenticated.error
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     const actionCreators = {
-        fetchApiUsersList
+        authenticate,
+        signUpUser
     };
     return bindActionCreators(actionCreators, dispatch);
 };
 
-const ResourcesContainer = connect(
+const SignupContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ResourcesUI);
+)(SignupUI);
 
-export default ResourcesContainer;
+export default SignupContainer;

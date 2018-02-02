@@ -17,7 +17,7 @@ describe('App', () => { // use 'describe' to group similar tests
     });
 
     it('show the correct text', () => {
-        expect(component).to.contain('React simple starter');
+        expect(component).to.contain('');
     });
 
     // it('shows a comment box', () => {
