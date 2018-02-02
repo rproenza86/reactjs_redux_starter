@@ -38,6 +38,8 @@ export default class App extends Component {
                 refreshing = true;
             });
         } else console.log('ServiceWorker not supported.');
+
+        document.getElementById('splash').remove();
     }
 
     render() {
