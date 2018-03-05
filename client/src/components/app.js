@@ -49,7 +49,7 @@ export default class App extends Component {
                     Header.Container
                 ];
         return ( 
-                <div className="app_shell" > 
+                <div className="app_shell"> 
                     <HeaderContainer/>
                     {this.props.children}
                 </div>

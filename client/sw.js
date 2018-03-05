@@ -1,3 +1,5 @@
+// 'use strict';
+
 const CACHE_STATIC_ASSETS = 'reactjs_redux_starter-static-v1';
 const CACHE_POSTS_IMAGES = 'reactjs_redux_starter-imgs';
 

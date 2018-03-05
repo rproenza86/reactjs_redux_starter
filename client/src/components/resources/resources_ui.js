@@ -3,8 +3,9 @@ import { Link } from 'react-router';
 
 export default class Resources extends Component {
     componentWillMount() {
-        if (this.props.authenticated === true)
+        if (this.props.authenticated === true && !this.props.users.length) {
             this.props.fetchApiUsersList();
+        }
     }
     
     renderUsers(user = {}, index) {
