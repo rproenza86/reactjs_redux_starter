@@ -1,17 +1,26 @@
 {
   "compilerOptions": {
-      "outDir": "./build/",
-      "sourceMap": true, // generates '.map' file
-      "noImplicitAny": false,
-      "noUnusedLocals": false, // errors for unused locals
-      "module": "commonjs",
-      "target": "es5"
-    },
-    "include": [
-      "./**/*"
-    ],
-    "exclude": [
-      "node_modules/",
-      "build/"
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "strictNullChecks": false,
+    "outDir": "lib",
+    "lib": [
+      "dom",
+      "es2017"
     ]
+  },
+  "compileOnSave": true,
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src"
+  ]
 }

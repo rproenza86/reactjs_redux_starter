@@ -62,7 +62,7 @@ export function signingUp(req: Request, res: Response, next: NextFunction) {
       username,
       email,
       password
-    }) as IUser;
+    }) as IUser;user.ddd();
 
     user.save()
     .then((user: IUser = <IUser>{}) => {

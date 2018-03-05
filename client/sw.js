@@ -3,7 +3,7 @@ const CACHE_POSTS_IMAGES = 'reactjs_redux_starter-imgs';
 
 const cacheWhitelist = [CACHE_POSTS_IMAGES, CACHE_STATIC_ASSETS];
 
-const urlsToCache = [
+const staticFilesToCache = [
     '/',
     '/bundle.js',
     '/style/style.css',
@@ -17,7 +17,7 @@ self.addEventListener('install', event => {
         caches.open(CACHE_STATIC_ASSETS)
         .then(cache => {
             console.info('Opened cache');
-            return cache.addAll(urlsToCache);
+            return cache.addAll(staticFilesToCache);
         })
     );
 });
