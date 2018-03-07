@@ -4,12 +4,46 @@ import {
     FETCH_USERS,
     SIGNIN_USER,
     AUTH_ERROR,
-    FETCH_API_USERS
+    FETCH_API_USERS,
+    APP_ONLINE,
+    APP_OFFLINE,
+    HIDE_NETWORK_STATUS_NOTIFICATION
 } from './actionsTypes';
 import axios from 'axios';
 import config from '../config/main';
 import { urlBuilder } from '../common/utils';
 import { browserHistory } from 'react-router';
+
+export const offlineDetected = (message) => {
+    return {
+        type: APP_OFFLINE,
+        payload: {
+            isAppOnline: false,
+            message: message,
+            notify: true
+        }
+    };
+};
+
+export const onlineDetected = (message) => {
+    return {
+        type: APP_ONLINE,
+        payload: {
+            isAppOnline: true,
+            message: message,
+            notify: true
+        }
+    };
+};
+
+export const hideNetworkStatusNotification = () => {
+    return {
+        type: HIDE_NETWORK_STATUS_NOTIFICATION,
+        payload: {
+            notify: false
+        }
+    };
+};
 
 export const saveComment = (comment) => {
     return {

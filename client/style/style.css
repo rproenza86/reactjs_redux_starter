@@ -8,3 +8,9 @@
     width: 30%;
     min-width: 300px;
 }
+
+@media (min-width: 960px) {
+    div[class*="MuiSnackbarContent-root"] {
+        min-width: auto !important;
+    }
+}

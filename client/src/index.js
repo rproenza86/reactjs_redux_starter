@@ -11,7 +11,7 @@ import green from 'material-ui/colors/green';
 import Reboot from 'material-ui/Reboot';
 import ReduxThunk from 'redux-thunk'; // Redux middleware
 import Auth from './middleware/auth';
-import { authenticate } from './actions'
+import { authenticate, offlineDetected, onlineDetected } from './actions'
 
 // A theme with custom primary and secondary color.
 // It's optional.
@@ -62,7 +62,21 @@ ReactDOM.render(
           <Route path="signin" component={SignIn.Container}/>
           <Route path="signup" component={SignUp.Container}/>
         </Route>
-      </Router>  
+	  </Router>
     </Provider>
   </MuiThemeProvider>
   , document.querySelector('.container'));
+
+/*************************************************************************************
+ * ONLINE/OFFLINE Event listeners
+ * ===============================
+ * These are dummy dispatches just so that I catch the change in network through 
+ * myReduxStoreEnhancer
+ *************************************************************************************/
+
+window.addEventListener('online', (event) => {
+  store.dispatch({type:"YOU_ARE_ONLINE"})
+  store.dispatch(onlineDetected("Looks like you are back Online"))}
+);
+
+window.addEventListener('offline', (event) => store.dispatch(offlineDetected("You seem to have gone offline")));

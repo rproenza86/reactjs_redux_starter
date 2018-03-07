@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './header';
+import NetworkStatus from './network_status';
 
 export default class App extends Component {
     componentWillMount() {
@@ -44,14 +45,17 @@ export default class App extends Component {
 
     render() {
         const [
-                HeaderContainer
+                HeaderContainer,
+                NetworkStatusContainer
             ] = [ 
-                    Header.Container
+                    Header.Container,
+                    NetworkStatus.Container
                 ];
         return ( 
                 <div className="app_shell"> 
                     <HeaderContainer/>
                     {this.props.children}
+                    <NetworkStatusContainer/>
                 </div>
             );
         }

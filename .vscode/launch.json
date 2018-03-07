@@ -63,8 +63,22 @@
             "name": "SERVER: Attach to local server",
             "port": 5858,
             "restart": true,
-            "localRoot": "${workspaceRoot}/build/**/*.js",
+            "localRoot": "${workspaceRoot}/**/*.js",
             "sourceMaps": true
-        }
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "CLIENT - Launch Client in Chrome",
+            "url": "http://localhost:8080/webpack-dev-server/",
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "CLIENT - Attach Client to Chrome",
+            "port": 9222,
+            "webRoot": "${workspaceRoot}"
+        },
     ]
 }

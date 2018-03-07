@@ -4,3 +4,6 @@ export const FETCH_USERS = 'fetch_users';
 export const SIGNIN_USER = 'signin_user';
 export const AUTH_ERROR = 'auth_error';
 export const FETCH_API_USERS = 'fetch_api_users';
+export const APP_ONLINE = 'THE_APP_IS_ONLINE';
+export const APP_OFFLINE = 'THE_APP_IS_OFFLINE';
+export const HIDE_NETWORK_STATUS_NOTIFICATION = 'HIDE_NETWORK_STATUS_NOTIFICATION';
