@@ -2,8 +2,9 @@
 
 const CACHE_STATIC_ASSETS = 'reactjs_redux_starter-static-v1';
 const CACHE_POSTS_IMAGES = 'reactjs_redux_starter-imgs';
+const CACHE_ASYNC_FETCH = 'reactjs_redux_starter-asyncFetch';
 
-const cacheWhitelist = [CACHE_POSTS_IMAGES, CACHE_STATIC_ASSETS];
+const cacheWhitelist = [CACHE_POSTS_IMAGES, CACHE_STATIC_ASSETS, CACHE_ASYNC_FETCH];
 
 const staticFilesToCache = [
     '/',
@@ -47,6 +48,7 @@ self.addEventListener('message', event => {
 self.addEventListener('fetch', event => {
     // Let the browser do its default thing
     // for non-GET requests.
+
     if (event.request.method != 'GET') return;
 
     const requestUrl = new URL(event.request.url);
@@ -58,7 +60,7 @@ self.addEventListener('fetch', event => {
         }
     }
 
-    event.respondWith(
+    event.respondWith( // TODO: change to Network falling back to cache
         caches.match(event.request)
         .then(function(response) {
             // Cache hit - return response
@@ -69,7 +71,12 @@ self.addEventListener('fetch', event => {
                 if (response.status === 404) {
                     return fetch('/imgs/dr-evil.gif');
                 }
-                return response;
+
+                caches.open(CACHE_ASYNC_FETCH).then(function(cache) {
+                  cache.put(event.request, response);
+                });
+
+                return response.clone();;
             }).catch(err => {
                 console.error(err);
                 return new Response("Resource request failed");

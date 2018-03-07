@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'; 
 import reducers from './reducers';
 import Async from './middleware/async';
+import Offline from './middleware/offline';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import purple from 'material-ui/colors/purple';
 import green from 'material-ui/colors/green';
@@ -40,8 +41,9 @@ import SignIn from './components/signin';
 import SignUp from './components/signup';
 import Home from './components/home';
 
-const createStoreWithMiddleware = applyMiddleware(Async, ReduxThunk, Auth)(createStore);
-const store = createStoreWithMiddleware(reducers,/* preloadedState, */
+const createStoreWithMiddleware = applyMiddleware(Async, Offline, ReduxThunk, Auth)(createStore);
+const preloadedState = JSON.parse(localStorage.getItem('persistedStore')) || {};
+const store = createStoreWithMiddleware(reducers, preloadedState,
                                         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const token = localStorage.getItem('token');

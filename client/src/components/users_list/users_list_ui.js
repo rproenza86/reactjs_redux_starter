@@ -23,7 +23,7 @@ export default class UsersList extends Component {
         return ( 
             <div className="users_list_ui">
                 <h3>Users List: </h3>
-                {this.props.users.map(this.renderUsers)}
+                {this.props.users.networkProblem? 'this.props.users.networkProblem' : this.props.users.map(this.renderUsers)}
             </div>
         );
     }

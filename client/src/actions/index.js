@@ -13,6 +13,7 @@ import axios from 'axios';
 import config from '../config/main';
 import { urlBuilder } from '../common/utils';
 import { browserHistory } from 'react-router';
+import {get, post} from '../helpers/asyncFetch';
 
 export const offlineDetected = (message) => {
     return {
@@ -60,7 +61,7 @@ export const authenticate = (isLoggedIn = false) => {
 };
 
 export const fetchUsers = (users = []) => {
-    const usersList = axios.get('https://jsonplaceholder.typicode.com/users'); // This will return a promise, so we need a middleware to handle the promise
+    const usersList = get('https://jsonplaceholder.typicode.com/users'); // This will return a promise, so we need a middleware to handle the promise
     return {
         type: FETCH_USERS,
         payload: usersList
@@ -88,7 +89,7 @@ export const signinUser = ({ username, password }) => {
     return function(dispatch) {
         const api_root_url =  urlBuilder(config.apiServer);
 
-        axios.post(`${api_root_url}/users/signin`, { username, password })
+        post(`${api_root_url}/users/signin`, { username, password })
             .then( response => {
                 _processUsersApiResponse(response, dispatch);
             })
@@ -109,7 +110,7 @@ export const signUpUser = ({email, username, password, name}) => {
     return function(dispatch) {
         const api_root_url =  urlBuilder(config.apiServer);
 
-        axios.post(`${api_root_url}/users`, { email, username, password, name })
+        post(`${api_root_url}/users`, { email, username, password, name })
             .then( response => {
                 _processUsersApiResponse(response, dispatch);
             })
@@ -125,7 +126,7 @@ export const fetchApiUsersList = () => {
     return function(dispatch) {
         const api_root_url =  urlBuilder(config.apiServer);
 
-        axios.get(`${api_root_url}/users`, {
+        get(`${api_root_url}/users`, {
             headers: { authorization: localStorage.getItem('token') }
         })
             .then( response => {
